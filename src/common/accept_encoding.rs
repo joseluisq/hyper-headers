@@ -1,7 +1,7 @@
 use std::convert::TryFrom;
 
-use {ContentCoding, HeaderValue};
 use util::{QualityValue, TryFromValues};
+use {ContentCoding, HeaderValue};
 
 /// `Accept-Encoding` header, defined in
 /// [RFC7231](https://tools.ietf.org/html/rfc7231#section-5.3.4)
@@ -78,7 +78,11 @@ impl AcceptEncoding {
     /// assert_eq!(accept_enc.prefered_encoding(), Some(ContentCoding::GZIP));
     /// ```
     pub fn prefered_encoding(&self) -> Option<ContentCoding> {
-        self.0.iter().peekable().peek().map(|s| ContentCoding::from_str(*s))
+        self.0
+            .iter()
+            .peekable()
+            .peek()
+            .map(|s| ContentCoding::from_str(*s))
     }
 
     /// Returns a quality sorted iterator of the `ContentCoding`
@@ -102,9 +106,9 @@ impl AcceptEncoding {
     }
 
     /// Returns a quality sorted iterator of values
-    /// 
+    ///
     /// # Example
-    /// 
+    ///
     /// ```
     /// use headers::{AcceptEncoding, ContentCoding, HeaderValue};
     ///

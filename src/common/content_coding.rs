@@ -2,11 +2,11 @@ use HeaderValue;
 
 // Derives an enum to represent content codings and some helpful impls
 macro_rules! define_content_coding {
-    ($($coding:ident; $str:expr,)+) => {   
+    ($($coding:ident; $str:expr,)+) => {
         #[derive(Copy, Clone, Debug, Eq, PartialEq)]
-        /// Values that are used with headers like [`Content-Encoding`](self::ContentEncoding) or 
+        /// Values that are used with headers like [`Content-Encoding`](self::ContentEncoding) or
         /// [`Accept-Encoding`](self::AcceptEncoding)
-        /// 
+        ///
         /// [RFC7231](https://www.iana.org/assignments/http-parameters/http-parameters.xhtml)
         pub enum ContentCoding {
             $(
@@ -17,12 +17,12 @@ macro_rules! define_content_coding {
 
         impl ContentCoding {
             /// Returns a `&'static str` for a `ContentCoding`
-            /// 
+            ///
             /// # Example
-            /// 
+            ///
             /// ```
             /// use headers::ContentCoding;
-            /// 
+            ///
             /// let coding = ContentCoding::BROTLI;
             /// assert_eq!(coding.to_static(), "br");
             /// ```
@@ -33,20 +33,20 @@ macro_rules! define_content_coding {
                 }
             }
 
-            /// Given a `&str` returns a `ContentCoding` 
-            /// 
-            /// Note this will never fail, in the case of `&str` being an invalid content coding, 
-            /// will return `ContentCoding::IDENTITY` because `'identity'` is generally always an 
+            /// Given a `&str` returns a `ContentCoding`
+            ///
+            /// Note this will never fail, in the case of `&str` being an invalid content coding,
+            /// will return `ContentCoding::IDENTITY` because `'identity'` is generally always an
             /// accepted coding.
-            /// 
+            ///
             /// # Example
-            /// 
+            ///
             /// ```
             /// use headers::ContentCoding;
-            /// 
+            ///
             /// let invalid = ContentCoding::from_str("not a valid coding");
             /// assert_eq!(invalid, ContentCoding::IDENTITY);
-            /// 
+            ///
             /// let valid = ContentCoding::from_str("gzip");
             /// assert_eq!(valid, ContentCoding::GZIP);
             /// ```
@@ -56,18 +56,18 @@ macro_rules! define_content_coding {
             }
 
             /// Given a `&str` will try to return a `ContentCoding`
-            /// 
+            ///
             /// Different from `ContentCoding::from_str(&str)`, if `&str` is an invalid content
             /// coding, it will return `Err(())`
-            /// 
+            ///
             /// # Example
-            /// 
+            ///
             /// ```
             /// use headers::ContentCoding;
-            /// 
+            ///
             /// let invalid = ContentCoding::try_from_str("not a valid coding");
             /// assert!(invalid.is_err());
-            /// 
+            ///
             /// let valid = ContentCoding::try_from_str("gzip");
             /// assert_eq!(valid.unwrap(), ContentCoding::GZIP);
             /// ```
@@ -128,7 +128,10 @@ mod tests {
     fn from_str() {
         assert_eq!(ContentCoding::from_str("br"), ContentCoding::BROTLI);
         assert_eq!(ContentCoding::from_str("GZIP"), ContentCoding::GZIP);
-        assert_eq!(ContentCoding::from_str("blah blah"), ContentCoding::IDENTITY);
+        assert_eq!(
+            ContentCoding::from_str("blah blah"),
+            ContentCoding::IDENTITY
+        );
     }
 
     #[test]
