@@ -108,6 +108,7 @@ define_content_coding! {
     DEFLATE; "deflate",
     GZIP; "gzip",
     IDENTITY; "identity",
+    ZSTD; "zstd",
 }
 
 #[cfg(test)]
@@ -128,6 +129,7 @@ mod tests {
     fn from_str() {
         assert_eq!(ContentCoding::from_str("br"), ContentCoding::BROTLI);
         assert_eq!(ContentCoding::from_str("GZIP"), ContentCoding::GZIP);
+        assert_eq!(ContentCoding::from_str("zstd"), ContentCoding::ZSTD);
         assert_eq!(
             ContentCoding::from_str("blah blah"),
             ContentCoding::IDENTITY
@@ -137,6 +139,7 @@ mod tests {
     #[test]
     fn try_from_str() {
         assert_eq!(ContentCoding::try_from_str("br"), Ok(ContentCoding::BROTLI));
+        assert_eq!(ContentCoding::try_from_str("zstd"), Ok(ContentCoding::ZSTD));
         assert_eq!(ContentCoding::try_from_str("blah blah"), Err(()));
     }
 }
