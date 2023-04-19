@@ -1,6 +1,6 @@
 [package]
 name = "headers-accept-encoding"
-version = "0.3.8" # don't forget to update html_root_url
+version = "1.0.0" # don't forget to update html_root_url
 description = "Hypper typed HTTP headers with Accept-Encoding support"
 license = "MIT"
 readme = "README.md"
