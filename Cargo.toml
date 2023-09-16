@@ -1,11 +1,11 @@
 [package]
 name = "headers-accept-encoding"
-version = "1.0.0" # don't forget to update html_root_url
-description = "Hypper typed HTTP headers with Accept-Encoding support"
+version = "1.0.1" # don't forget to update html_root_url
+description = "Hypper typed HTTP headers with Accept-Encoding + zstd support"
 license = "MIT"
 readme = "README.md"
 homepage = "https://hyper.rs"
-repository = "https://github.com/hyperium/headers"
+repository = "https://github.com/static-web-server/headers-accept-encoding"
 authors = ["Sean McArthur <sean@seanmonstar.com>", "Jose Quintana <joseluisq.net>"]
 keywords = ["http", "headers", "hyper", "hyperium"]
 categories = ["web-programming"]
@@ -25,6 +25,7 @@ bytes = "1"
 mime = "0.3.14"
 sha1 = "0.10"
 httpdate = "1"
+itertools = "0.11"
 
 [features]
 nightly = []
