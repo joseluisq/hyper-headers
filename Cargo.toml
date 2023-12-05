@@ -1,6 +1,6 @@
 [package]
 name = "headers-accept-encoding"
-version = "1.0.1" # don't forget to update html_root_url
+version = "1.1.0" # don't forget to update html_root_url
 description = "Hypper typed HTTP headers with Accept-Encoding + zstd support"
 license = "MIT"
 readme = "README.md"
@@ -9,14 +9,8 @@ repository = "https://github.com/static-web-server/headers-accept-encoding"
 authors = ["Sean McArthur <sean@seanmonstar.com>", "Jose Quintana <joseluisq.net>"]
 keywords = ["http", "headers", "hyper", "hyperium"]
 categories = ["web-programming"]
-rust-version = "1.56"
-rust-version = "1.56"
 
-[workspace]
-members = [
-    "./",
-    "headers-core",
-]
+rust-version = "1.56"
 
 [dependencies]
 http = "1.0.0"
