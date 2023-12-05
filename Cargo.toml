@@ -10,6 +10,7 @@ authors = ["Sean McArthur <sean@seanmonstar.com>", "Jose Quintana <joseluisq.net
 keywords = ["http", "headers", "hyper", "hyperium"]
 categories = ["web-programming"]
 rust-version = "1.56"
+rust-version = "1.56"
 
 [workspace]
 members = [
@@ -18,9 +19,9 @@ members = [
 ]
 
 [dependencies]
-http = "0.2.0"
-headers-core = { version = "0.2" }
-base64 = "0.21.3"
+http = "1.0.0"
+headers-core = { version = "0.3" }
+base64 = "0.21.5"
 bytes = "1"
 mime = "0.3.14"
 sha1 = "0.10"
